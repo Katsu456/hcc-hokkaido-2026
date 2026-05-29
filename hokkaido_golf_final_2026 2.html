@@ -1,0 +1,454 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>北海道はでっかいどうツアー 2026 旅程表</title>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+  <style>
+  
+:root{
+  --font-sans: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Hiragino Kaku Gothic ProN","Hiragino Sans","Noto Sans JP","Yu Gothic","Meiryo",Arial,sans-serif;
+  --font-serif: "Hiragino Mincho ProN","Yu Mincho","Noto Serif JP",serif;
+  --color-background-primary: #ffffff;
+  --color-background-secondary: #f6f7f8;
+  --color-text-primary: #111827;
+  --color-text-secondary: #4b5563;
+  --color-text-tertiary: #6b7280;
+  --color-border-secondary: #e5e7eb;
+  --color-border-tertiary: #e5e7eb;
+  --border-radius-md: 12px;
+  --border-radius-lg: 16px;
+}
+html,body{background:var(--color-background-primary); color:var(--color-text-primary);}
+
+  /* 画面外に隠す（アクセシビリティ用） */
+  .sr-only {
+    position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden;
+    clip:rect(0,0,0,0); white-space:nowrap; border:0;
+  }
+  </style>
+</head>
+<body>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  .wrap { padding: 1.5rem 0; font-family: var(--font-sans); }
+
+  .tournament-header { text-align: center; padding: 1.5rem 1rem 1.5rem; background: var(--color-background-secondary); border-radius: var(--border-radius-lg); margin-bottom: 2rem; }
+  .hcc-mark { display: inline-block; background: #185FA5; color: #fff; font-size: 11px; font-weight: 500; letter-spacing: 2px; padding: 3px 14px; border-radius: 4px; margin-bottom: 1rem; }
+  .hcc-mark span { color: rgba(255,255,255,0.8); font-size: 9px; margin-left: 6px; letter-spacing: 0.3px; }
+  .tournament-title { font-size: 26px; font-weight: 500; color: var(--color-text-primary); line-height: 1.3; }
+  .tournament-title em { font-style: normal; background: linear-gradient(transparent 65%, #FAC775 65%); padding: 0 4px; }
+  .tournament-year { display: inline-block; font-size: 16px; color: var(--color-text-secondary); margin-left: 8px; letter-spacing: 1.5px; vertical-align: 2px; }
+  .dedication-header { margin-top: 1rem; font-family: var(--font-serif); font-style: italic; font-size: 15px; color: #712B13; letter-spacing: 0.5px; line-height: 1.6; }
+  .dedication-header i { font-size: 13px; color: #993C1D; vertical-align: -1px; margin: 0 4px; }
+  .tournament-meta { margin-top: 1rem; padding-top: 1rem; border-top: 0.5px solid var(--color-border-tertiary); font-size: 12px; color: var(--color-text-secondary); letter-spacing: 0.3px; }
+  .tournament-meta .divider { margin: 0 8px; color: var(--color-text-tertiary); }
+  .course-strip { display: flex; justify-content: center; align-items: center; gap: 8px; margin-top: 14px; flex-wrap: wrap; }
+  .course-item { display: inline-flex; align-items: center; gap: 6px; background: var(--color-background-primary); padding: 5px 10px; border-radius: var(--border-radius-md); border: 0.5px solid var(--color-border-tertiary); }
+  .course-day { font-size: 10px; font-weight: 500; color: #0F6E56; background: #E1F5EE; padding: 1px 6px; border-radius: 3px; letter-spacing: 0.5px; }
+  .course-name { font-size: 12px; color: var(--color-text-primary); }
+  .course-arrow { font-size: 11px; color: var(--color-text-tertiary); }
+
+  .prize-section { background: var(--color-background-secondary); border-radius: var(--border-radius-lg); padding: 1.25rem; margin-top: 1.5rem; }
+  .prize-header { display: flex; align-items: center; gap: 12px; margin-bottom: 1rem; padding-bottom: 0.75rem; border-bottom: 0.5px solid var(--color-border-tertiary); }
+  .prize-icon-wrap { width: 40px; height: 40px; border-radius: 50%; background: #FAEEDA; color: #BA7517; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .prize-icon-wrap i { font-size: 22px; }
+  .prize-title { font-size: 15px; font-weight: 500; color: var(--color-text-primary); }
+  .prize-subtitle { font-size: 12px; color: var(--color-text-secondary); margin-top: 2px; }
+  .prize-total { margin-left: auto; text-align: right; }
+  .prize-total-label { font-size: 10px; color: var(--color-text-secondary); }
+  .prize-total-val { font-size: 18px; font-weight: 500; color: #854F0B; }
+  .medal-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 0.75rem; }
+  .medal-card { border-radius: var(--border-radius-md); padding: 14px 10px; text-align: center; border: 0.5px solid; }
+  .medal-card i { font-size: 24px; }
+  .medal-rank { font-size: 12px; font-weight: 500; margin-top: 4px; }
+  .medal-amount { font-size: 17px; font-weight: 500; margin-top: 4px; }
+  .medal-card.gold { background: #FAEEDA; border-color: #EF9F27; } .medal-card.gold i { color: #BA7517; } .medal-card.gold .medal-rank { color: #633806; } .medal-card.gold .medal-amount { color: #412402; }
+  .medal-card.silver { background: #F1EFE8; border-color: #B4B2A9; } .medal-card.silver i { color: #5F5E5A; } .medal-card.silver .medal-rank { color: #2C2C2A; } .medal-card.silver .medal-amount { color: #2C2C2A; }
+  .medal-card.bronze { background: #FAECE7; border-color: #D85A30; } .medal-card.bronze i { color: #993C1D; } .medal-card.bronze .medal-rank { color: #712B13; } .medal-card.bronze .medal-amount { color: #4A1B0C; }
+  .bonus-label { font-size: 11px; font-weight: 500; color: #5F5E5A; margin: 12px 0 8px; }
+  .bonus-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-bottom: 0.75rem; }
+  .bonus-card { background: var(--color-background-primary); border: 0.5px solid var(--color-border-tertiary); border-radius: var(--border-radius-md); padding: 10px 6px; text-align: center; }
+  .bonus-rank { font-size: 11px; color: var(--color-text-secondary); }
+  .bonus-amount { font-size: 14px; font-weight: 500; color: var(--color-text-primary); margin-top: 2px; }
+  .bonus-card.bb { background: #EEEDFE; border-color: #AFA9EC; } .bonus-card.bb .bonus-rank { color: #3C3489; } .bonus-card.bb .bonus-amount { color: #26215C; }
+  .nearpin-card { background: #E6F1FB; border: 0.5px solid #85B7EB; border-radius: var(--border-radius-md); padding: 12px 14px; display: flex; align-items: center; gap: 12px; }
+  .nearpin-card i { font-size: 22px; color: #185FA5; flex-shrink: 0; }
+  .nearpin-title { font-size: 13px; font-weight: 500; color: #0C447C; }
+  .nearpin-sub { font-size: 12px; color: #185FA5; margin-top: 2px; line-height: 1.5; }
+  .nearpin-amount { margin-left: auto; font-size: 15px; font-weight: 500; color: #0C447C; text-align: right; flex-shrink: 0; }
+  .nearpin-amount-sub { font-size: 10px; color: #185FA5; }
+
+  .day-block { margin-bottom: 2.5rem; }
+  .day-header { display: flex; align-items: baseline; gap: 10px; padding: 0.6rem 1rem; background: var(--color-background-secondary); border-radius: var(--border-radius-md); border-left: 3px solid #1D9E75; margin-bottom: 0.75rem; }
+  .day-label { font-size: 13px; font-weight: 500; color: #0F6E56; }
+  .day-title { font-size: 15px; font-weight: 500; color: var(--color-text-primary); }
+  .timeline { display: flex; flex-direction: column; padding-left: 0.5rem; }
+  .row { display: grid; grid-template-columns: 68px 16px 1fr; gap: 0 10px; align-items: start; }
+  .time { font-size: 13px; font-weight: 500; color: var(--color-text-secondary); text-align: right; padding-top: 10px; white-space: nowrap; }
+  .dot-col { display: flex; flex-direction: column; align-items: center; }
+  .dot { width: 10px; height: 10px; border-radius: 50%; background: #1D9E75; margin-top: 14px; flex-shrink: 0; }
+  .dot.meal { background: #D85A30; }
+  .line { width: 1.5px; flex: 1; background: var(--color-border-tertiary); min-height: 8px; }
+  .content { padding: 8px 0 10px; border-bottom: 0.5px solid var(--color-border-tertiary); }
+  .row:last-child .content { border-bottom: none; }
+  .content-main { font-size: 14px; color: var(--color-text-primary); line-height: 1.5; }
+  .content-sub { font-size: 12px; color: var(--color-text-secondary); margin-top: 3px; line-height: 1.6; }
+  .badge { display: inline-block; font-size: 11px; font-weight: 500; padding: 1px 8px; border-radius: 20px; margin-right: 4px; vertical-align: middle; }
+  .badge-green { background: #E1F5EE; color: #0F6E56; }
+  .badge-orange { background: #FAECE7; color: #993C1D; }
+  .badge-gray { background: #F1EFE8; color: #5F5E5A; }
+  .badge-blue { background: #E6F1FB; color: #185FA5; }
+  .hint { font-size: 12px; color: var(--color-text-secondary); background: var(--color-background-secondary); border-radius: var(--border-radius-md); padding: 4px 10px; margin-top: 4px; display: inline-block; }
+  .warn-block { background: #FCEBEB; border-radius: var(--border-radius-md); padding: 10px 14px; margin-top: 0.5rem; font-size: 12px; color: #791F1F; line-height: 1.6; }
+  .note-block { background: #FAEEDA; border-radius: var(--border-radius-md); padding: 10px 14px; margin-top: 1rem; }
+  .note-block p { font-size: 13px; color: #633806; line-height: 1.6; }
+  .note-label { font-size: 11px; font-weight: 500; color: #854F0B; margin-bottom: 4px; }
+
+  .match-section { margin-top: 0.75rem; background: var(--color-background-secondary); border-radius: var(--border-radius-md); padding: 14px 16px; }
+  .match-section-head { display: flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 500; color: var(--color-text-primary); margin-bottom: 4px; }
+  .match-section-head i { font-size: 16px; color: #1D9E75; }
+  .match-meta { font-size: 11px; color: var(--color-text-secondary); margin-bottom: 12px; padding-left: 24px; }
+  .match-side { margin-top: 10px; }
+  .match-side-label { display: inline-block; font-size: 11px; font-weight: 500; padding: 2px 10px; border-radius: 20px; margin-bottom: 8px; }
+  .match-side-label.out { background: #E1F5EE; color: #0F6E56; }
+  .match-side-label.in { background: #E6F1FB; color: #185FA5; }
+  .group-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
+  .group-card { background: var(--color-background-primary); border: 0.5px solid var(--color-border-tertiary); border-radius: var(--border-radius-md); padding: 8px 10px; }
+  .group-card-head { display: flex; justify-content: space-between; align-items: baseline; font-size: 11px; font-weight: 500; color: var(--color-text-secondary); margin-bottom: 6px; padding-bottom: 5px; border-bottom: 0.5px solid var(--color-border-tertiary); }
+  .group-num { color: var(--color-text-primary); font-size: 12px; }
+  .member-list { list-style: none; counter-reset: item; }
+  .member-list li { counter-increment: item; font-size: 12px; color: var(--color-text-tertiary); padding: 3px 0; display: flex; align-items: center; gap: 6px; }
+  .member-list li::before { content: counter(item); font-size: 9px; color: var(--color-text-secondary); background: var(--color-background-secondary); width: 14px; height: 14px; display: inline-flex; align-items: center; justify-content: center; border-radius: 50%; flex-shrink: 0; font-weight: 500; }
+
+  .info-section { margin-top: 2.5rem; }
+  .section-title { font-size: 14px; font-weight: 500; color: var(--color-text-primary); padding-bottom: 0.5rem; border-bottom: 0.5px solid var(--color-border-secondary); margin-bottom: 1rem; display: flex; align-items: center; gap: 8px; }
+  .section-title i { font-size: 18px; color: #1D9E75; }
+  .cat-label { font-size: 11px; font-weight: 500; color: #5F5E5A; letter-spacing: 0.5px; margin: 1.25rem 0 0.5rem; }
+  .card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 10px; }
+  .info-card { background: var(--color-background-primary); border: 0.5px solid var(--color-border-tertiary); border-radius: var(--border-radius-md); padding: 12px 14px; }
+  .info-card-name { font-size: 13px; font-weight: 500; color: var(--color-text-primary); margin-bottom: 6px; }
+  .info-card-meta { font-size: 11px; color: var(--color-text-secondary); line-height: 1.6; }
+  .info-card-links { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
+  .ilink { display: inline-flex; align-items: center; gap: 3px; font-size: 11px; color: #185FA5; background: #E6F1FB; padding: 2px 8px; border-radius: 20px; text-decoration: none; }
+  .ilink i { font-size: 12px; }
+  .price-pill { display: inline-block; font-size: 12px; font-weight: 500; color: #0F6E56; background: #E1F5EE; padding: 2px 10px; border-radius: 20px; margin-top: 6px; }
+
+  /* 参加者一覧 */
+  .participant-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    border: 0.5px solid var(--color-border-tertiary);
+    border-radius: var(--border-radius-md);
+    overflow: hidden;
+    background: var(--color-background-primary);
+  }
+  .participant-cell {
+    padding: 12px 14px;
+    border-right: 0.5px solid var(--color-border-tertiary);
+    border-bottom: 0.5px solid var(--color-border-tertiary);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    min-width: 0;
+  }
+  .participant-cell:nth-child(4n) { border-right: none; }
+  .participant-cell:nth-last-child(-n+4) { border-bottom: none; }
+  .participant-num {
+    font-size: 10px;
+    color: var(--color-text-secondary);
+    background: var(--color-background-secondary);
+    width: 20px; height: 20px;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    font-weight: 500;
+  }
+  .participant-name { font-size: 13px; color: var(--color-text-primary); }
+  .participant-cell.vacant .participant-name { color: var(--color-text-tertiary); font-style: italic; }
+  .participant-meta-row {
+    display: flex; align-items: center; justify-content: space-between;
+    margin-bottom: 10px;
+  }
+  .participant-meta-row .meta-info { font-size: 12px; color: var(--color-text-secondary); }
+</style>
+
+<div class="wrap">
+  <h2 class="sr-only">HCC 北海道はでっかいどうツアー 2026　旅程表</h2>
+
+  <!-- トーナメントヘッダー -->
+  <div class="tournament-header">
+    <div class="hcc-mark">HCC<span>平塚富士見カントリークラブ</span></div>
+    <h1 class="tournament-title">
+      北海道は<em>でっかいどう</em>ツアー<span class="tournament-year">2026</span>
+    </h1>
+    <div class="dedication-header">
+      <i class="ti ti-heart" aria-hidden="true"></i>
+      松尾さん、ありがとう。また会う日まで。
+      <i class="ti ti-heart" aria-hidden="true"></i>
+    </div>
+    <div class="tournament-meta">
+      <span>2026年7月16日(木)〜18日(土)</span>
+      <span class="divider">・</span>
+      <span>3コース・3日間</span>
+      <span class="divider">・</span>
+      <span>24名参加</span>
+    </div>
+    <div class="course-strip">
+      <div class="course-item">
+        <span class="course-day">DAY 1</span>
+        <span class="course-name">御前水ゴルフ倶楽部</span>
+      </div>
+      <span class="course-arrow"><i class="ti ti-arrow-right" aria-hidden="true"></i></span>
+      <div class="course-item">
+        <span class="course-day">DAY 2</span>
+        <span class="course-name">小樽カントリー倶楽部</span>
+      </div>
+      <span class="course-arrow"><i class="ti ti-arrow-right" aria-hidden="true"></i></span>
+      <div class="course-item">
+        <span class="course-day">DAY 3</span>
+        <span class="course-name">早来カントリー倶楽部</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Day 1 -->
+  <div class="day-block">
+    <div class="day-header"><span class="day-label">1日目</span><span class="day-title">7月16日（木）　集合・御前水ラウンド</span></div>
+    <div class="timeline">
+      <div class="row">
+        <div class="time">09:30</div><div class="dot-col"><div class="dot"></div><div class="line"></div></div>
+        <div class="content"><div class="content-main">新千歳空港　貸切バス前　集合</div><div class="hint">※詳細場所は当日LINEにて</div></div>
+      </div>
+      <div class="row">
+        <div class="time">10:00</div><div class="dot-col"><div class="dot"></div><div class="line"></div></div>
+        <div class="content"><div class="content-main">新千歳空港　出発　→　バスで御前水ゴルフ倶楽部へ移動</div></div>
+      </div>
+      <div class="row">
+        <div class="time">10:30</div><div class="dot-col"><div class="dot"></div><div class="line"></div></div>
+        <div class="content"><div class="content-main">御前水ゴルフ倶楽部　到着</div></div>
+      </div>
+      <div class="row">
+        <div class="time">12:22</div><div class="dot-col"><div class="dot"></div><div class="line"></div></div>
+        <div class="content">
+          <div class="content-main"><span class="badge badge-green">スタート</span>OUT / IN 各3組、計6組</div>
+          <div class="content-sub">料金：23,700円（キャディ付・乗用カート）<br>※池野さんの会員特別紹介券利用で、14,000円程度になる見込み</div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="time">18:00</div><div class="dot-col"><div class="dot"></div><div class="line"></div></div>
+        <div class="content"><div class="content-main">ゴルフ場　出発　→　バスで札幌へ移動</div></div>
+      </div>
+      <div class="row">
+        <div class="time">19:00</div><div class="dot-col"><div class="dot"></div><div class="line"></div></div>
+        <div class="content"><div class="content-main">札幌東急REIホテル前　到着・各自各ホテルにチェックイン</div></div>
+      </div>
+      <div class="row">
+        <div class="time">19:45</div><div class="dot-col"><div class="dot"></div><div class="line"></div></div>
+        <div class="content"><div class="content-main">札幌東急REIホテル前　集合　→　「のざわ」へ徒歩移動</div></div>
+      </div>
+      <div class="row">
+        <div class="time">20:00</div><div class="dot-col"><div class="dot meal"></div></div>
+        <div class="content"><div class="content-main"><span class="badge badge-orange">夕食</span>ジンギスカン「のざわ」　（〜22:00）</div><div class="content-sub">生ラムが評判の人気店。費用目安：約8,000円</div></div>
+      </div>
+    </div>
+
+    <div class="match-section">
+      <div class="match-section-head"><i class="ti ti-users" aria-hidden="true"></i>組み合わせ</div>
+      <div class="match-meta">御前水ゴルフ倶楽部　12:22 スタート　／　24名・6組</div>
+      <div class="match-side">
+        <span class="match-side-label out">OUT スタート</span>
+        <div class="group-grid">
+          <div class="group-card"><div class="group-card-head"><span class="group-num">1組</span></div><ul class="member-list"><li>（未定）</li><li>（未定）</li><li>（未定）</li><li>（未定）</li></ul></div>
+          <div class="group-card"><div class="group-card-head"><span class="group-num">2組</span></div><ul class="member-list"><li>（未定）</li><li>（未定）</li><li>（未定）</li><li>（未定）</li></ul></div>
+          <div class="group-card"><div class="group-card-head"><span class="group-num">3組</span></div><ul class="member-list"><li>（未定）</li><li>（未定）</li><li>（未定）</li><li>（未定）</li></ul></div>
+        </div>
+      </div>
+      <div class="match-side">
+        <span class="match-side-label in">IN スタート</span>
+        <div class="group-grid">
+          <div class="group-card"><div class="group-card-head"><span class="group-num">1組</span></div><ul class="member-list"><li>（未定）</li><li>（未定）</li><li>（未定）</li><li>（未定）</li></ul></div>
+          <div class="group-card"><div class="group-card-head"><span class="group-num">2組</span></div><ul class="member-list"><li>（未定）</li><li>（未定）</li><li>（未定）</li><li>（未定）</li></ul></div>
+          <div class="group-card"><div class="group-card-head"><span class="group-num">3組</span></div><ul class="member-list"><li>（未定）</li><li>（未定）</li><li>（未定）</li><li>（未定）</li></ul></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Day 2 -->
+  <div class="day-block">
+    <div class="day-header"><span class="day-label">2日目</span><span class="day-title">7月17日（金）　お土産・名門小樽CCラウンド</span></div>
+    <div class="timeline">
+      <div class="row"><div class="time">09:30</div><div class="dot-col"><div class="dot"></div><div class="line"></div></div><div class="content"><div class="content-main">札幌東急REIホテル前　集合・出発　→　バスで市場へ移動</div></div></div>
+      <div class="row"><div class="time">09:45</div><div class="dot-col"><div class="dot"></div><div class="line"></div></div><div class="content"><div class="content-main">土産物市場　到着・買物　<span class="badge badge-gray">市場は検討中</span></div></div></div>
+      <div class="row"><div class="time">10:45</div><div class="dot-col"><div class="dot"></div><div class="line"></div></div><div class="content"><div class="content-main">土産物市場　出発　→　バスで小樽カントリー倶楽部へ移動</div></div></div>
+      <div class="row"><div class="time">11:30</div><div class="dot-col"><div class="dot"></div><div class="line"></div></div><div class="content"><div class="content-main">小樽カントリー倶楽部（新コース）　到着</div></div></div>
+      <div class="row">
+        <div class="time">13:00</div><div class="dot-col"><div class="dot"></div><div class="line"></div></div>
+        <div class="content">
+          <div class="content-main"><span class="badge badge-green">スタート</span>OUT / IN 各3組、計6組</div>
+          <div class="content-sub">料金：31,230円（諸税込・キャディ付・歩きプレー）</div>
+          <div class="warn-block">⚠ キャンセル料：3週間前(6月26日)より1組10,000円が発生します</div>
+        </div>
+      </div>
+      <div class="row"><div class="time">18:15頃</div><div class="dot-col"><div class="dot"></div><div class="line"></div></div><div class="content"><div class="content-main">ゴルフ場　出発　→　バスで札幌へ移動</div></div></div>
+      <div class="row"><div class="time">19:00</div><div class="dot-col"><div class="dot"></div><div class="line"></div></div><div class="content"><div class="content-main">札幌東急REIホテル前　到着</div></div></div>
+      <div class="row"><div class="time">19:50</div><div class="dot-col"><div class="dot"></div><div class="line"></div></div><div class="content"><div class="content-main">札幌東急REIホテル前　集合　→　「かに亭」へ徒歩移動</div></div></div>
+      <div class="row"><div class="time">20:00</div><div class="dot-col"><div class="dot meal"></div><div class="line"></div></div><div class="content"><div class="content-main"><span class="badge badge-orange">夕食</span>郷土料理「かに亭」　（〜22:00）</div><div class="content-sub">道産すずらんコース（13,000円）＋飲み放題（2,800円）</div></div></div>
+      <div class="row"><div class="time">22:15〜</div><div class="dot-col"><div class="dot meal"></div></div><div class="content"><div class="content-main"><span class="badge badge-blue">二次会</span>「笑パブ BOWWOW」</div><div class="content-sub">120分飲み放題付：5,000〜6,000円</div></div></div>
+    </div>
+
+    <div class="match-section">
+      <div class="match-section-head"><i class="ti ti-users" aria-hidden="true"></i>組み合わせ</div>
+      <div class="match-meta">小樽カントリー倶楽部（新コース）　13:00 スタート　／　24名・6組</div>
+      <div class="match-side">
+        <span class="match-side-label out">OUT スタート</span>
+        <div class="group-grid">
+          <div class="group-card"><div class="group-card-head"><span class="group-num">1組</span></div><ul class="member-list"><li>（未定）</li><li>（未定）</li><li>（未定）</li><li>（未定）</li></ul></div>
+          <div class="group-card"><div class="group-card-head"><span class="group-num">2組</span></div><ul class="member-list"><li>（未定）</li><li>（未定）</li><li>（未定）</li><li>（未定）</li></ul></div>
+          <div class="group-card"><div class="group-card-head"><span class="group-num">3組</span></div><ul class="member-list"><li>（未定）</li><li>（未定）</li><li>（未定）</li><li>（未定）</li></ul></div>
+        </div>
+      </div>
+      <div class="match-side">
+        <span class="match-side-label in">IN スタート</span>
+        <div class="group-grid">
+          <div class="group-card"><div class="group-card-head"><span class="group-num">1組</span></div><ul class="member-list"><li>（未定）</li><li>（未定）</li><li>（未定）</li><li>（未定）</li></ul></div>
+          <div class="group-card"><div class="group-card-head"><span class="group-num">2組</span></div><ul class="member-list"><li>（未定）</li><li>（未定）</li><li>（未定）</li><li>（未定）</li></ul></div>
+          <div class="group-card"><div class="group-card-head"><span class="group-num">3組</span></div><ul class="member-list"><li>（未定）</li><li>（未定）</li><li>（未定）</li><li>（未定）</li></ul></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Day 3 -->
+  <div class="day-block">
+    <div class="day-header"><span class="day-label">3日目</span><span class="day-title">7月18日（土）　早来CC・解散</span></div>
+    <div class="timeline">
+      <div class="row"><div class="time">09:30</div><div class="dot-col"><div class="dot"></div><div class="line"></div></div><div class="content"><div class="content-main">札幌東急REIホテル前　集合・出発（各自チェックアウト）</div></div></div>
+      <div class="row"><div class="time">10:30</div><div class="dot-col"><div class="dot"></div><div class="line"></div></div><div class="content"><div class="content-main">早来カントリー倶楽部　到着</div></div></div>
+      <div class="row"><div class="time">12:39〜</div><div class="dot-col"><div class="dot"></div><div class="line"></div></div><div class="content"><div class="content-main"><span class="badge badge-green">スタート</span>北ウィング OUT / IN　3組同時（12:39 / 12:46 / 12:53）</div><div class="content-sub">料金：14,500円（セルフ・乗用カート付）<br>2025年リニューアルのサウナ（セルフロウリュ可）利用可能</div></div></div>
+      <div class="row"><div class="time">18:00</div><div class="dot-col"><div class="dot"></div><div class="line"></div></div><div class="content"><div class="content-main">ゴルフ場　出発　→　バスで新千歳空港へ移動</div></div></div>
+      <div class="row"><div class="time">18:30〜<br>19:00頃</div><div class="dot-col"><div class="dot"></div></div><div class="content"><div class="content-main">新千歳空港　到着・解散</div><div class="content-sub">空港内で夕食・お土産購入の後、各自の便にて帰路へ</div></div></div>
+    </div>
+
+    <div class="match-section">
+      <div class="match-section-head"><i class="ti ti-users" aria-hidden="true"></i>組み合わせ</div>
+      <div class="match-meta">早来カントリー倶楽部（北ウィング）　12:39 / 12:46 / 12:53 スタート　／　24名・6組</div>
+      <div class="match-side">
+        <span class="match-side-label out">OUT スタート</span>
+        <div class="group-grid">
+          <div class="group-card"><div class="group-card-head"><span class="group-num">1組</span><span>12:39</span></div><ul class="member-list"><li>（未定）</li><li>（未定）</li><li>（未定）</li><li>（未定）</li></ul></div>
+          <div class="group-card"><div class="group-card-head"><span class="group-num">2組</span><span>12:46</span></div><ul class="member-list"><li>（未定）</li><li>（未定）</li><li>（未定）</li><li>（未定）</li></ul></div>
+          <div class="group-card"><div class="group-card-head"><span class="group-num">3組</span><span>12:53</span></div><ul class="member-list"><li>（未定）</li><li>（未定）</li><li>（未定）</li><li>（未定）</li></ul></div>
+        </div>
+      </div>
+      <div class="match-side">
+        <span class="match-side-label in">IN スタート</span>
+        <div class="group-grid">
+          <div class="group-card"><div class="group-card-head"><span class="group-num">1組</span><span>12:39</span></div><ul class="member-list"><li>（未定）</li><li>（未定）</li><li>（未定）</li><li>（未定）</li></ul></div>
+          <div class="group-card"><div class="group-card-head"><span class="group-num">2組</span><span>12:46</span></div><ul class="member-list"><li>（未定）</li><li>（未定）</li><li>（未定）</li><li>（未定）</li></ul></div>
+          <div class="group-card"><div class="group-card-head"><span class="group-num">3組</span><span>12:53</span></div><ul class="member-list"><li>（未定）</li><li>（未定）</li><li>（未定）</li><li>（未定）</li></ul></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="note-block"><div class="note-label">備考</div><p>今後追加予定</p></div>
+
+  <!-- 施設情報 -->
+  <div class="info-section">
+    <div class="section-title"><i class="ti ti-info-circle" aria-hidden="true"></i>施設情報</div>
+    <div class="cat-label">ゴルフ場</div>
+    <div class="card-grid">
+      <div class="info-card"><div class="info-card-name">御前水ゴルフ倶楽部</div><div class="info-card-links"><a class="ilink" href="https://www.gozensui-gc.com/"><i class="ti ti-world" aria-hidden="true"></i>公式サイト</a></div></div>
+      <div class="info-card"><div class="info-card-name">小樽カントリー倶楽部</div><div class="info-card-links"><a class="ilink" href="https://otaru-cc.com/"><i class="ti ti-world" aria-hidden="true"></i>公式サイト</a></div></div>
+      <div class="info-card"><div class="info-card-name">早来カントリー倶楽部</div><div class="info-card-links"><a class="ilink" href="http://www.hayakita-golf.jp/"><i class="ti ti-world" aria-hidden="true"></i>公式サイト</a></div></div>
+    </div>
+    <div class="cat-label">宿泊・集合場所</div>
+    <div class="card-grid">
+      <div class="info-card"><div class="info-card-name">札幌東急REIホテル</div><div class="info-card-meta">北海道札幌市中央区南4条西5-1<br>TEL：011-531-0109</div><div class="info-card-links"><a class="ilink" href="https://www.tokyuhotels.co.jp/sapporo-r/index.html"><i class="ti ti-world" aria-hidden="true"></i>公式サイト</a></div></div>
+    </div>
+    <div class="cat-label">お食事・二次会</div>
+    <div class="card-grid">
+      <div class="info-card"><div class="info-card-name">ジンギスカン のざわ</div><div class="info-card-links"><a class="ilink" href="https://tabelog.com/hokkaido/A0101/A010103/1001047/"><i class="ti ti-external-link" aria-hidden="true"></i>食べログ</a><a class="ilink" href="https://maps.app.goo.gl/eJHBxZfKHvDPy4NL9"><i class="ti ti-map-pin" aria-hidden="true"></i>地図</a></div></div>
+      <div class="info-card"><div class="info-card-name">郷土料理 かに亭</div><div class="info-card-links"><a class="ilink" href="https://kanitei.owst.jp/"><i class="ti ti-world" aria-hidden="true"></i>公式サイト</a><a class="ilink" href="https://maps.app.goo.gl/V59jsRYr6LRwVKdw9"><i class="ti ti-map-pin" aria-hidden="true"></i>地図</a></div></div>
+      <div class="info-card"><div class="info-card-name">笑パブ BOWWOW</div><div class="info-card-links"><a class="ilink" href="https://s-freec.com/BOWWOW/"><i class="ti ti-external-link" aria-hidden="true"></i>店舗情報</a><a class="ilink" href="https://maps.app.goo.gl/dEE1BsyyhDKut29bA"><i class="ti ti-map-pin" aria-hidden="true"></i>地図</a></div></div>
+    </div>
+    <div class="cat-label">貸切バス</div>
+    <div class="card-grid">
+      <div class="info-card" style="grid-column: 1 / -1;">
+        <div class="info-card-name">有限会社 栗山交通</div>
+        <div class="info-card-meta">〒069-1507 北海道夕張郡栗山町字旭台1番地79<br>TEL：0123-72-4745 ／ FAX：0123-72-2845<br>車両：大型バス（サロンタイプ・冷蔵庫付き）</div>
+        <div class="price-pill">見積金額：355,000円（税込）　※有料道路代・駐車代別</div>
+      </div>
+    </div>
+
+    <div class="prize-section">
+      <div class="prize-header">
+        <div class="prize-icon-wrap"><i class="ti ti-trophy" aria-hidden="true"></i></div>
+        <div><div class="prize-title">ラウンド賞　／　各日共通</div><div class="prize-subtitle">新ペリア方式での順位集計 ＋ ニアピン　・　3日間、毎ラウンドが勝負！</div></div>
+        <div class="prize-total"><div class="prize-total-label">1ラウンド総額</div><div class="prize-total-val">¥60,000</div></div>
+      </div>
+      <div class="medal-grid">
+        <div class="medal-card gold"><i class="ti ti-trophy" aria-hidden="true"></i><div class="medal-rank">優勝</div><div class="medal-amount">¥10,000</div></div>
+        <div class="medal-card silver"><i class="ti ti-medal" aria-hidden="true"></i><div class="medal-rank">準優勝</div><div class="medal-amount">¥7,000</div></div>
+        <div class="medal-card bronze"><i class="ti ti-award" aria-hidden="true"></i><div class="medal-rank">3位</div><div class="medal-amount">¥5,000</div></div>
+      </div>
+      <div class="bonus-label">飛び賞・特別賞　／　運次第で誰でもチャンスあり</div>
+      <div class="bonus-grid">
+        <div class="bonus-card"><div class="bonus-rank">5位</div><div class="bonus-amount">¥3,000</div></div>
+        <div class="bonus-card"><div class="bonus-rank">7位</div><div class="bonus-amount">¥5,000</div></div>
+        <div class="bonus-card"><div class="bonus-rank">10位</div><div class="bonus-amount">¥3,000</div></div>
+        <div class="bonus-card"><div class="bonus-rank">13位</div><div class="bonus-amount">¥3,000</div></div>
+        <div class="bonus-card"><div class="bonus-rank">15位</div><div class="bonus-amount">¥3,000</div></div>
+        <div class="bonus-card bb"><div class="bonus-rank">BB（ブービー）</div><div class="bonus-amount">¥5,000</div></div>
+      </div>
+      <div class="nearpin-card">
+        <i class="ti ti-flag" aria-hidden="true"></i>
+        <div><div class="nearpin-title">ニアピン賞　／　ピンに最も近い者勝ち！</div><div class="nearpin-sub">OUT・IN それぞれにニアピンホール設定<br>4ホール × ¥4,000</div></div>
+        <div class="nearpin-amount">¥16,000<div class="nearpin-amount-sub">合計</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 参加者一覧 -->
+  <div class="info-section">
+    <div class="section-title"><i class="ti ti-users-group" aria-hidden="true"></i>参加者一覧</div>
+    <div class="participant-meta-row">
+      <span class="meta-info">五十音順　／　全24名（うち1名未確定）</span>
+    </div>
+    <div class="participant-grid">
+      <div class="participant-cell"><span class="participant-num">1</span><span class="participant-name">朝長　昭仁</span></div>
+      <div class="participant-cell"><span class="participant-num">2</span><span class="participant-name">芦刈　克己</span></div>
+      <div class="participant-cell"><span class="participant-num">3</span><span class="participant-name">甘糟　裕介</span></div>
+      <div class="participant-cell"><span class="participant-num">4</span><span class="participant-name">池野　元就</span></div>
+      <div class="participant-cell"><span class="participant-num">5</span><span class="participant-name">井上　直紀</span></div>
+      <div class="participant-cell"><span class="participant-num">6</span><span class="participant-name">上中　康則</span></div>
+      <div class="participant-cell"><span class="participant-num">7</span><span class="participant-name">川野　英輝</span></div>
+      <div class="participant-cell"><span class="participant-num">8</span><span class="participant-name">鬼頭　謙治</span></div>
+      <div class="participant-cell"><span class="participant-num">9</span><span class="participant-name">木目田　秀一</span></div>
+      <div class="participant-cell"><span class="participant-num">10</span><span class="participant-name">清野　誠</span></div>
+      <div class="participant-cell"><span class="participant-num">11</span><span class="participant-name">杉山　倫久</span></div>
+      <div class="participant-cell"><span class="participant-num">12</span><span class="participant-name">高井　勝</span></div>
+      <div class="participant-cell"><span class="participant-num">13</span><span class="participant-name">中川　大輔</span></div>
+      <div class="participant-cell"><span class="participant-num">14</span><span class="participant-name">西根　克紀</span></div>
+      <div class="participant-cell"><span class="participant-num">15</span><span class="participant-name">二ノ宮　喜博</span></div>
+      <div class="participant-cell"><span class="participant-num">16</span><span class="participant-name">野村　卓洋</span></div>
+      <div class="participant-cell"><span class="participant-num">17</span><span class="participant-name">早川　和雄</span></div>
+      <div class="participant-cell"><span class="participant-num">18</span><span class="participant-name">日坂　泰之</span></div>
+      <div class="participant-cell"><span class="participant-num">19</span><span class="participant-name">晝間　隆広</span></div>
+      <div class="participant-cell"><span class="participant-num">20</span><span class="participant-name">保住　朋之</span></div>
+      <div class="participant-cell"><span class="participant-num">21</span><span class="participant-name">武藏　圭太</span></div>
+      <div class="participant-cell"><span class="participant-num">22</span><span class="participant-name">山口　秀明</span></div>
+      <div class="participant-cell"><span class="participant-num">23</span><span class="participant-name">山田　秀明</span></div>
+      <div class="participant-cell vacant"><span class="participant-num">24</span><span class="participant-name">（未定）</span></div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
