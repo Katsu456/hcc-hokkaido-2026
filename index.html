@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HCC 北海道はでっかいどうツアー 2026</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+  <style>
+    :root {
+      --green: #1D9E75;
+      --green-dark: #0F6E56;
+      --green-bg: #E1F5EE;
+      --orange: #D85A30;
+      --orange-bg: #FAECE7;
+      --blue: #185FA5;
+      --blue-bg: #E6F1FB;
+      --gold-bg: #FAEEDA;
+      --gold: #BA7517;
+      --gold-dark: #854F0B;
+      --purple-bg: #EEEDFE;
+      --purple: #3C3489;
+      --gray-bg: #F1EFE8;
+      --gray: #5F5E5A;
+      --red-bg: #FCEBEB;
+      --red: #791F1F;
+      --warn-bg: #FFF3CD;
+      --border: #E2E0D9;
+      --border-light: #EDEBE4;
+      --bg: #FAFAF8;
+      --bg2: #F4F2EB;
+      --text: #1A1916;
+      --text2: #5F5E5A;
+      --text3: #9C9A93;
+      --radius: 10px;
+      --radius-sm: 6px;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, "Hiragino Sans", "Yu Gothic", sans-serif; background: var(--bg); color: var(--text); line-height: 1.5; }
+    .page { max-width: 720px; margin: 0 auto; padding: 1.5rem 1rem 4rem; }
+
+    /* ヘッダー */
+    .tournament-header { text-align: center; padding: 2rem 1.5rem; background: var(--bg2); border-radius: var(--radius); margin-bottom: 2rem; border: 0.5px solid var(--border); }
+    .hcc-mark { display: inline-block; background: var(--blue); color: #fff; font-size: 11px; font-weight: 600; letter-spacing: 2px; padding: 4px 16px; border-radius: 4px; margin-bottom: 1rem; }
+    .hcc-mark span { color: rgba(255,255,255,0.8); font-size: 9px; margin-left: 8px; letter-spacing: 0.3px; font-weight: 400; }
+    .tournament-title { font-size: clamp(20px, 5vw, 28px); font-weight: 600; color: var(--text); line-height: 1.3; }
+    .tournament-title em { font-style: normal; background: linear-gradient(transparent 65%, #FAC775 65%); padding: 0 3px; }
+    .tournament-year { font-size: 16px; color: var(--text2); margin-left: 8px; letter-spacing: 1.5px; }
+    .dedication { margin-top: 1rem; font-style: italic; font-size: 15px; color: #712B13; letter-spacing: 0.5px; }
+    .dedication i { font-size: 13px; color: #993C1D; vertical-align: -1px; margin: 0 4px; }
+    .tournament-meta { margin-top: 1rem; padding-top: 1rem; border-top: 0.5px solid var(--border); font-size: 12px; color: var(--text2); }
+    .tournament-meta .div { margin: 0 8px; color: var(--text3); }
+    .course-strip { display: flex; justify-content: center; align-items: center; gap: 8px; margin-top: 14px; flex-wrap: wrap; }
+    .course-item { display: inline-flex; align-items: center; gap: 6px; background: #fff; padding: 5px 10px; border-radius: var(--radius-sm); border: 0.5px solid var(--border); }
+    .course-day { font-size: 10px; font-weight: 600; color: var(--green-dark); background: var(--green-bg); padding: 1px 6px; border-radius: 3px; letter-spacing: 0.5px; }
+    .course-name { font-size: 12px; color: var(--text); }
+    .course-arrow { font-size: 12px; color: var(--text3); }
+
+    /* 日程ブロック */
+    .day-block { margin-bottom: 2.5rem; }
+    .day-header { display: flex; align-items: baseline; gap: 10px; padding: 0.6rem 1rem; background: var(--bg2); border-radius: var(--radius-sm); border-left: 3px solid var(--green); margin-bottom: 0.75rem; }
+    .day-label { font-size: 13px; font-weight: 600; color: var(--green-dark); white-space: nowrap; }
+    .day-title { font-size: 15px; font-weight: 500; color: var(--text); }
+
+    /* タイムライン */
+    .timeline { display: flex; flex-direction: column; padding-left: 0.5rem; }
+    .row { display: grid; grid-template-columns: 68px 16px 1fr; gap: 0 10px; align-items: start; }
+    .time { font-size: 13px; font-weight: 500; color: var(--text2); text-align: right; padding-top: 10px; white-space: nowrap; }
+    .dot-col { display: flex; flex-direction: column; align-items: center; }
+    .dot { width: 10px; height: 10px; border-radius: 50%; background: var(--green); margin-top: 14px; flex-shrink: 0; }
+    .dot.meal { background: var(--orange); }
+    .line { width: 1.5px; flex: 1; background: var(--border-light); min-height: 8px; }
+    .content { padding: 8px 0 10px; border-bottom: 0.5px solid var(--border-light); }
+    .row:last-child .content { border-bottom: none; }
+    .content-main { font-size: 14px; color: var(--text); line-height: 1.5; }
+    .content-sub { font-size: 12px; color: var(--text2); margin-top: 3px; line-height: 1.6; }
+    .badge { display: inline-block; font-size: 11px; font-weight: 600; padding: 1px 8px; border-radius: 20px; margin-right: 4px; vertical-align: middle; }
+    .badge-green { background: var(--green-bg); color: var(--green-dark); }
+    .badge-orange { background: var(--orange-bg); color: #993C1D; }
+    .badge-gray { background: var(--gray-bg); color: var(--gray); }
+    .badge-blue { background: var(--blue-bg); color: var(--blue); }
+    .hint { font-size: 12px; color: var(--text2); background: var(--bg2); border-radius: var(--radius-sm); padding: 4px 10px; margin-top: 4px; display: inline-block; }
+    .warn-block { background: var(--red-bg); border-radius: var(--radius-sm); padding: 10px 14px; margin-top: 0.5rem; font-size: 12px; color: var(--red); line-height: 1.6; }
+
+    /* 組み合わせ */
+    .match-section { margin-top: 0.75rem; background: var(--bg2); border-radius: var(--radius-sm); padding: 14px 16px; }
+    .match-head { display: flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 600; color: var(--text); margin-bottom: 4px; }
+    .match-head i { font-size: 16px; color: var(--green); }
+    .match-meta-text { font-size: 11px; color: var(--text2); margin-bottom: 12px; padding-left: 24px; }
+    .match-side { margin-top: 10px; }
+    .side-label { display: inline-block; font-size: 11px; font-weight: 600; padding: 2px 10px; border-radius: 20px; margin-bottom: 8px; }
+    .side-label.out { background: var(--green-bg); color: var(--green-dark); }
+    .side-label.in { background: var(--blue-bg); color: var(--blue); }
+    .group-grid { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 8px; }
+    .group-card { background: #fff; border: 0.5px solid var(--border); border-radius: var(--radius-sm); padding: 8px 10px; }
+    .group-head { display: flex; justify-content: space-between; align-items: baseline; font-size: 11px; font-weight: 500; color: var(--text2); margin-bottom: 6px; padding-bottom: 5px; border-bottom: 0.5px solid var(--border-light); }
+    .group-num { color: var(--text); font-size: 12px; font-weight: 600; }
+    .member-list { list-style: none; }
+    .member-list li { font-size: 12px; color: var(--text3); padding: 3px 0; display: flex; align-items: center; gap: 6px; }
+    .member-list li::before { content: attr(data-n); font-size: 9px; color: var(--text2); background: var(--bg2); width: 14px; height: 14px; display: inline-flex; align-items: center; justify-content: center; border-radius: 50%; flex-shrink: 0; font-weight: 600; }
+
+    /* 備考 */
+    .note-block { background: var(--gold-bg); border-radius: var(--radius-sm); padding: 10px 14px; margin-top: 1rem; }
+    .note-block p { font-size: 13px; color: #633806; line-height: 1.6; }
+    .note-label { font-size: 11px; font-weight: 600; color: #854F0B; margin-bottom: 4px; }
+
+    /* セクション */
+    .section { margin-top: 2.5rem; }
+    .section-title { font-size: 14px; font-weight: 600; color: var(--text); padding-bottom: 0.5rem; border-bottom: 0.5px solid var(--border); margin-bottom: 1rem; display: flex; align-items: center; gap: 8px; }
+    .section-title i { font-size: 18px; color: var(--green); }
+    .cat-label { font-size: 11px; font-weight: 600; color: var(--gray); letter-spacing: 0.5px; margin: 1.25rem 0 0.5rem; }
+
+    /* 施設カード */
+    .card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 10px; }
+    .info-card { background: #fff; border: 0.5px solid var(--border); border-radius: var(--radius-sm); padding: 12px 14px; }
+    .info-card-name { font-size: 13px; font-weight: 600; color: var(--text); margin-bottom: 6px; }
+    .info-card-meta { font-size: 11px; color: var(--text2); line-height: 1.6; }
+    .info-card-links { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
+    .ilink { display: inline-flex; align-items: center; gap: 3px; font-size: 11px; color: var(--blue); background: var(--blue-bg); padding: 2px 8px; border-radius: 20px; text-decoration: none; }
+    .ilink:hover { opacity: 0.8; }
+    .ilink i { font-size: 12px; }
+    .price-pill { display: inline-block; font-size: 12px; font-weight: 600; color: var(--green-dark); background: var(--green-bg); padding: 2px 10px; border-radius: 20px; margin-top: 6px; }
+
+    /* 賞金 */
+    .prize-box { background: var(--bg2); border-radius: var(--radius); padding: 1.25rem; margin-top: 1.5rem; border: 0.5px solid var(--border); }
+    .prize-header { display: flex; align-items: center; gap: 12px; margin-bottom: 1rem; padding-bottom: 0.75rem; border-bottom: 0.5px solid var(--border); }
+    .prize-icon { width: 40px; height: 40px; border-radius: 50%; background: var(--gold-bg); color: var(--gold); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .prize-icon i { font-size: 22px; }
+    .prize-title-text { font-size: 15px; font-weight: 600; color: var(--text); }
+    .prize-subtitle-text { font-size: 12px; color: var(--text2); margin-top: 2px; }
+    .prize-total { margin-left: auto; text-align: right; }
+    .prize-total-label { font-size: 10px; color: var(--text2); }
+    .prize-total-val { font-size: 18px; font-weight: 700; color: var(--gold-dark); }
+    .medal-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 10px; margin-bottom: 0.75rem; }
+    .medal-card { border-radius: var(--radius-sm); padding: 14px 10px; text-align: center; border: 0.5px solid; }
+    .medal-card i { font-size: 24px; }
+    .medal-rank { font-size: 12px; font-weight: 600; margin-top: 4px; }
+    .medal-amount { font-size: 17px; font-weight: 700; margin-top: 4px; }
+    .gold { background: var(--gold-bg); border-color: #EF9F27; } .gold i { color: var(--gold); } .gold .medal-rank { color: #633806; } .gold .medal-amount { color: #412402; }
+    .silver { background: var(--gray-bg); border-color: #B4B2A9; } .silver i { color: var(--gray); } .silver .medal-rank,.silver .medal-amount { color: #2C2C2A; }
+    .bronze { background: var(--orange-bg); border-color: var(--orange); } .bronze i { color: #993C1D; } .bronze .medal-rank { color: #712B13; } .bronze .medal-amount { color: #4A1B0C; }
+    .bonus-label { font-size: 11px; font-weight: 600; color: var(--gray); margin: 12px 0 8px; }
+    .bonus-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 8px; margin-bottom: 0.75rem; }
+    .bonus-card { background: #fff; border: 0.5px solid var(--border); border-radius: var(--radius-sm); padding: 10px 6px; text-align: center; }
+    .bonus-rank { font-size: 11px; color: var(--text2); }
+    .bonus-amount { font-size: 14px; font-weight: 700; color: var(--text); margin-top: 2px; }
+    .bb { background: var(--purple-bg); border-color: #AFA9EC; } .bb .bonus-rank { color: var(--purple); } .bb .bonus-amount { color: #26215C; }
+    .nearpin-card { background: var(--blue-bg); border: 0.5px solid #85B7EB; border-radius: var(--radius-sm); padding: 12px 14px; display: flex; align-items: center; gap: 12px; }
+    .nearpin-card i { font-size: 22px; color: var(--blue); flex-shrink: 0; }
+    .nearpin-title { font-size: 13px; font-weight: 600; color: #0C447C; }
+    .nearpin-sub { font-size: 12px; color: var(--blue); margin-top: 2px; line-height: 1.5; }
+    .nearpin-amount { margin-left: auto; font-size: 15px; font-weight: 700; color: #0C447C; text-align: right; flex-shrink: 0; }
+    .nearpin-amount-sub { font-size: 10px; color: var(--blue); }
+
+    /* 参加者 */
+    .participant-meta { font-size: 12px; color: var(--text2); margin-bottom: 10px; }
+    .participant-grid { display: grid; grid-template-columns: repeat(4,1fr); border: 0.5px solid var(--border); border-radius: var(--radius-sm); overflow: hidden; background: #fff; }
+    .p-cell { padding: 11px 12px; border-right: 0.5px solid var(--border); border-bottom: 0.5px solid var(--border); display: flex; align-items: center; gap: 8px; min-width: 0; }
+    .p-cell:nth-child(4n) { border-right: none; }
+    .p-cell:nth-last-child(-n+4) { border-bottom: none; }
+    .p-num { font-size: 10px; color: var(--text2); background: var(--bg2); width: 20px; height: 20px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0; font-weight: 600; }
+    .p-name { font-size: 13px; color: var(--text); }
+    .p-cell.vacant .p-name { color: var(--text3); font-style: italic; }
+
+    /* フッター */
+    .footer { margin-top: 3rem; padding-top: 1.5rem; border-top: 0.5px solid var(--border); text-align: center; font-size: 11px; color: var(--text3); line-height: 1.8; }
+
+    @media (max-width: 480px) {
+      .group-grid { grid-template-columns: 1fr 1fr; }
+      .participant-grid { grid-template-columns: repeat(2,1fr); }
+      .p-cell:nth-child(4n) { border-right: 0.5px solid var(--border); }
+      .p-cell:nth-child(2n) { border-right: none; }
+      .p-cell:nth-last-child(-n+4) { border-bottom: 0.5px solid var(--border); }
+      .p-cell:nth-last-child(-n+2) { border-bottom: none; }
+      .course-strip { flex-direction: column; gap: 6px; }
+      .course-arrow { transform: rotate(90deg); }
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <!-- ヘッダー -->
+  <div class="tournament-header">
+    <div class="hcc-mark">HCC<span>平塚富士見カントリークラブ</span></div>
+    <div class="tournament-title">
+      北海道は<em>でっかいどう</em>ツアー<span class="tournament-year">2026</span>
+    </div>
+    <div class="dedication">
+      <i class="ti ti-heart"></i>Hey Matsuo, Come Back to Otaru!!<i class="ti ti-heart"></i>
+    </div>
+    <div class="tournament-meta">
+      <span>2026年7月16日(木)〜18日(土)</span><span class="div">・</span>
+      <span>3コース・3日間</span><span class="div">・</span>
+      <span>24名参加</span>
+    </div>
+    <div class="course-strip">
+      <div class="course-item"><span class="course-day">DAY 1</span><span class="course-name">御前水ゴルフ倶楽部</span></div>
+      <span class="course-arrow"><i class="ti ti-arrow-right"></i></span>
+      <div class="course-item"><span class="course-day">DAY 2</span><span class="course-name">小樽カントリー倶楽部</span></div>
+      <span class="course-arrow"><i class="ti ti-arrow-right"></i></span>
+      <div class="course-item"><span class="course-day">DAY 3</span><span class="course-name">早来カントリー倶楽部</span></div>
+    </div>
+  </div>
+
+  <!-- Day 1 -->
+  <div class="day-block">
+    <div class="day-header"><span class="day-label">1日目</span><span class="day-title">7月16日（木）　新千歳空港集合・御前水GCラウンド</span></div>
+    <div class="timeline">
+      <div class="row"><div class="time">09:30</div><div class="dot-col"><div class="dot"></div><div class="line"></div></div><div class="content"><div class="content-main">新千歳空港　貸切バス前　集合</div><div class="hint">※詳細場所は当日LINEにて</div></div></div>
+      <div class="row"><div class="time">10:00</div><div class="dot-col"><div class="dot"></div><div class="line"></div></div><div class="content"><div class="content-main">新千歳空港　出発　→　バスで御前水ゴルフ倶楽部へ移動</div></div></div>
+      <div class="row"><div class="time">10:30</div><div class="dot-col"><div class="dot"></div><div class="line"></div></div><div class="content"><div class="content-main">御前水ゴルフ倶楽部　到着</div></div></div>
+      <div class="row"><div class="time">12:22</div><div class="dot-col"><div class="dot"></div><div class="line"></div></div><div class="content"><div class="content-main"><span class="badge badge-green">スタート</span>OUT / IN 各3組、計6組</div><div class="content-sub">料金：23,700円（キャディ付・乗用カート、昼別）<br>※池野さんの会員特別紹介券利用で、14,000円程度になる見込み</div></div></div>
+      <div class="row"><div class="time">18:00</div><div class="dot-col"><div class="dot"></div><div class="line"></div></div><div class="content"><div class="content-main">ゴルフ場　出発　→　バスでホテルへ移動</div></div></div>
+      <div class="row"><div class="time">19:00</div><div class="dot-col"><div class="dot"></div><div class="line"></div></div><div class="content"><div class="content-main">札幌東急REIホテル前　到着・各自各ホテルにチェックイン</div></div></div>
+      <div class="row"><div class="time">19:45</div><div class="dot-col"><div class="dot"></div><div class="line"></div></div><div class="content"><div class="content-main">札幌東急REIホテル前　集合　→　「のざわ」へ徒歩移動</div></div></div>
+      <div class="row"><div class="time">20:00</div><div class="dot-col"><div class="dot meal"></div></div><div class="content"><div class="content-main"><span class="badge badge-orange">夕食</span>ジンギスカン「のざわ」　（〜22:00）</div><div class="content-sub">生ラムが評判の人気店。費用目安：約8,000円</div></div></div>
+    </div>
+    <div class="match-section">
+      <div class="match-head"><i class="ti ti-users"></i>組み合わせ</div>
+      <div class="match-meta-text">御前水ゴルフ倶楽部　12:22 スタート　／　24名・6組</div>
+      <div class="match-side"><span class="side-label out">OUT スタート</span><div class="group-grid"><div class="group-card"><div class="group-head"><span class="group-num">1組</span></div><ul class="member-list"><li data-n="1">（未定）</li><li data-n="2">（未定）</li><li data-n="3">（未定）</li><li data-n="4">（未定）</li></ul></div><div class="group-card"><div class="group-head"><span class="group-num">2組</span></div><ul class="member-list"><li data-n="1">（未定）</li><li data-n="2">（未定）</li><li data-n="3">（未定）</li><li data-n="4">（未定）</li></ul></div><div class="group-card"><div class="group-head"><span class="group-num">3組</span></div><ul class="member-list"><li data-n="1">（未定）</li><li data-n="2">（未定）</li><li data-n="3">（未定）</li><li data-n="4">（未定）</li></ul></div></div></div>
+      <div class="match-side"><span class="side-label in">IN スタート</span><div class="group-grid"><div class="group-card"><div class="group-head"><span class="group-num">1組</span></div><ul class="member-list"><li data-n="1">（未定）</li><li data-n="2">（未定）</li><li data-n="3">（未定）</li><li data-n="4">（未定）</li></ul></div><div class="group-card"><div class="group-head"><span class="group-num">2組</span></div><ul class="member-list"><li data-n="1">（未定）</li><li data-n="2">（未定）</li><li data-n="3">（未定）</li><li data-n="4">（未定）</li></ul></div><div class="group-card"><div class="group-head"><span class="group-num">3組</span></div><ul class="member-list"><li data-n="1">（未定）</li><li data-n="2">（未定）</li><li data-n="3">（未定）</li><li data-n="4">（未定）</li></ul></div></div></div>
+    </div>
+  </div>
+
+  <!-- Day 2 -->
+  <div class="day-block">
+    <div class="day-header"><span class="day-label">2日目</span><span class="day-title">7月17日（金）　お土産市場・小樽CCラウンド</span></div>
+    <div class="timeline">
+      <div class="row"><div class="time">09:30</div><div class="dot-col"><div class="dot"></div><div class="line"></div></div><div class="content"><div class="content-main">札幌東急REIホテル前　集合・出発　→　バスで市場へ移動</div></div></div>
+      <div class="row"><div class="time">09:45</div><div class="dot-col"><div class="dot"></div><div class="line"></div></div><div class="content"><div class="content-main">土産物市場　到着・買物　<span class="badge badge-gray">市場は検討中</span></div></div></div>
+      <div class="row"><div class="time">10:45</div><div class="dot-col"><div class="dot"></div><div class="line"></div></div><div class="content"><div class="content-main">土産物市場　出発　→　バスで小樽カントリー倶楽部へ移動</div></div></div>
+      <div class="row"><div class="time">11:30</div><div class="dot-col"><div class="dot"></div><div class="line"></div></div><div class="content"><div class="content-main">小樽カントリー倶楽部（新コース）　到着</div></div></div>
+      <div class="row"><div class="time">13:00</div><div class="dot-col"><div class="dot"></div><div class="line"></div></div><div class="content"><div class="content-main"><span class="badge badge-green">スタート</span>OUT / IN 各3組、計6組</div><div class="content-sub">料金：31,230円（諸税込・キャディ付・歩きプレー、昼別）<br>小樽CCメンバーの松尾さんに予約していただきました。</div><div class="warn-block">⚠ キャンセル料：3週間前（6月26日）より1組10,000円が発生します</div></div></div>
+      <div class="row"><div class="time">18:15頃</div><div class="dot-col"><div class="dot"></div><div class="line"></div></div><div class="content"><div class="content-main">ゴルフ場　出発　→　バスでホテルへ移動</div></div></div>
+      <div class="row"><div class="time">19:00</div><div class="dot-col"><div class="dot"></div><div class="line"></div></div><div class="content"><div class="content-main">札幌東急REIホテル前　到着</div></div></div>
+      <div class="row"><div class="time">19:50</div><div class="dot-col"><div class="dot"></div><div class="line"></div></div><div class="content"><div class="content-main">札幌東急REIホテル前　集合　→　「かに亭」へ徒歩移動</div></div></div>
+      <div class="row"><div class="time">20:00</div><div class="dot-col"><div class="dot meal"></div><div class="line"></div></div><div class="content"><div class="content-main"><span class="badge badge-orange">夕食</span>郷土料理「かに亭」　（〜22:00）</div><div class="content-sub">道産すずらんコース（13,000円）＋飲み放題（2,800円）</div></div></div>
+      <div class="row"><div class="time">22:15〜</div><div class="dot-col"><div class="dot meal"></div></div><div class="content"><div class="content-main"><span class="badge badge-blue">二次会</span>「笑パブ BOWWOW」</div><div class="content-sub">120分飲み放題付：5,000〜6,000円</div></div></div>
+    </div>
+    <div class="match-section">
+      <div class="match-head"><i class="ti ti-users"></i>組み合わせ</div>
+      <div class="match-meta-text">小樽カントリー倶楽部（新コース）　13:00 スタート　／　24名・6組</div>
+      <div class="match-side"><span class="side-label out">OUT スタート</span><div class="group-grid"><div class="group-card"><div class="group-head"><span class="group-num">1組</span></div><ul class="member-list"><li data-n="1">（未定）</li><li data-n="2">（未定）</li><li data-n="3">（未定）</li><li data-n="4">（未定）</li></ul></div><div class="group-card"><div class="group-head"><span class="group-num">2組</span></div><ul class="member-list"><li data-n="1">（未定）</li><li data-n="2">（未定）</li><li data-n="3">（未定）</li><li data-n="4">（未定）</li></ul></div><div class="group-card"><div class="group-head"><span class="group-num">3組</span></div><ul class="member-list"><li data-n="1">（未定）</li><li data-n="2">（未定）</li><li data-n="3">（未定）</li><li data-n="4">（未定）</li></ul></div></div></div>
+      <div class="match-side"><span class="side-label in">IN スタート</span><div class="group-grid"><div class="group-card"><div class="group-head"><span class="group-num">1組</span></div><ul class="member-list"><li data-n="1">（未定）</li><li data-n="2">（未定）</li><li data-n="3">（未定）</li><li data-n="4">（未定）</li></ul></div><div class="group-card"><div class="group-head"><span class="group-num">2組</span></div><ul class="member-list"><li data-n="1">（未定）</li><li data-n="2">（未定）</li><li data-n="3">（未定）</li><li data-n="4">（未定）</li></ul></div><div class="group-card"><div class="group-head"><span class="group-num">3組</span></div><ul class="member-list"><li data-n="1">（未定）</li><li data-n="2">（未定）</li><li data-n="3">（未定）</li><li data-n="4">（未定）</li></ul></div></div></div>
+    </div>
+  </div>
+
+  <!-- Day 3 -->
+  <div class="day-block">
+    <div class="day-header"><span class="day-label">3日目</span><span class="day-title">7月18日（土）　早来CCラウンド・新千歳空港解散</span></div>
+    <div class="timeline">
+      <div class="row"><div class="time">09:30</div><div class="dot-col"><div class="dot"></div><div class="line"></div></div><div class="content"><div class="content-main">札幌東急REIホテル前　集合・出発（各自チェックアウト）</div></div></div>
+      <div class="row"><div class="time">10:30</div><div class="dot-col"><div class="dot"></div><div class="line"></div></div><div class="content"><div class="content-main">早来カントリー倶楽部　到着</div></div></div>
+      <div class="row"><div class="time">12:39〜</div><div class="dot-col"><div class="dot"></div><div class="line"></div></div><div class="content"><div class="content-main"><span class="badge badge-green">スタート</span>北ウィング OUT / IN　3組同時（12:39 / 12:46 / 12:53）</div><div class="content-sub">料金：14,500円（セルフ・乗用カート乗り入れ可、昼別）<br>2025年リニューアルのサウナ（セルフロウリュ可）利用可能</div></div></div>
+      <div class="row"><div class="time">18:00</div><div class="dot-col"><div class="dot"></div><div class="line"></div></div><div class="content"><div class="content-main">ゴルフ場　出発　→　バスで新千歳空港へ移動</div></div></div>
+      <div class="row"><div class="time">18:30〜<br>19:00頃</div><div class="dot-col"><div class="dot"></div></div><div class="content"><div class="content-main">新千歳空港　到着・解散</div><div class="content-sub">空港内で夕食・お土産購入の後、各自の便にて帰路へ</div></div></div>
+    </div>
+    <div class="match-section">
+      <div class="match-head"><i class="ti ti-users"></i>組み合わせ</div>
+      <div class="match-meta-text">早来カントリー倶楽部（北ウィング）　12:39 / 12:46 / 12:53 スタート　／　24名・6組</div>
+      <div class="match-side"><span class="side-label out">OUT スタート</span><div class="group-grid"><div class="group-card"><div class="group-head"><span class="group-num">1組</span><span>12:39</span></div><ul class="member-list"><li data-n="1">（未定）</li><li data-n="2">（未定）</li><li data-n="3">（未定）</li><li data-n="4">（未定）</li></ul></div><div class="group-card"><div class="group-head"><span class="group-num">2組</span><span>12:46</span></div><ul class="member-list"><li data-n="1">（未定）</li><li data-n="2">（未定）</li><li data-n="3">（未定）</li><li data-n="4">（未定）</li></ul></div><div class="group-card"><div class="group-head"><span class="group-num">3組</span><span>12:53</span></div><ul class="member-list"><li data-n="1">（未定）</li><li data-n="2">（未定）</li><li data-n="3">（未定）</li><li data-n="4">（未定）</li></ul></div></div></div>
+      <div class="match-side"><span class="side-label in">IN スタート</span><div class="group-grid"><div class="group-card"><div class="group-head"><span class="group-num">1組</span><span>12:39</span></div><ul class="member-list"><li data-n="1">（未定）</li><li data-n="2">（未定）</li><li data-n="3">（未定）</li><li data-n="4">（未定）</li></ul></div><div class="group-card"><div class="group-head"><span class="group-num">2組</span><span>12:46</span></div><ul class="member-list"><li data-n="1">（未定）</li><li data-n="2">（未定）</li><li data-n="3">（未定）</li><li data-n="4">（未定）</li></ul></div><div class="group-card"><div class="group-head"><span class="group-num">3組</span><span>12:53</span></div><ul class="member-list"><li data-n="1">（未定）</li><li data-n="2">（未定）</li><li data-n="3">（未定）</li><li data-n="4">（未定）</li></ul></div></div></div>
+    </div>
+  </div>
+
+  <div class="note-block"><div class="note-label">備考</div><p>今後追加予定</p></div>
+
+  <!-- 施設情報 -->
+  <div class="section">
+    <div class="section-title"><i class="ti ti-info-circle"></i>施設情報</div>
+    <div class="cat-label">ゴルフ場</div>
+    <div class="card-grid">
+      <div class="info-card"><div class="info-card-name">御前水ゴルフ倶楽部</div><div class="info-card-links"><a class="ilink" href="https://www.gozensui-gc.com/" target="_blank"><i class="ti ti-world"></i>公式サイト</a></div></div>
+      <div class="info-card"><div class="info-card-name">小樽カントリー倶楽部</div><div class="info-card-links"><a class="ilink" href="https://otaru-cc.com/" target="_blank"><i class="ti ti-world"></i>公式サイト</a></div></div>
+      <div class="info-card"><div class="info-card-name">早来カントリー倶楽部</div><div class="info-card-links"><a class="ilink" href="https://www.hayakitacc.com/" target="_blank"><i class="ti ti-world"></i>公式サイト</a></div></div>
+    </div>
+    <div class="cat-label">宿泊・集合場所</div>
+    <div class="card-grid">
+      <div class="info-card"><div class="info-card-name">札幌東急REIホテル</div><div class="info-card-meta">北海道札幌市中央区南4条西5-1<br>TEL：011-531-0109</div><div class="info-card-links"><a class="ilink" href="https://www.tokyuhotels.co.jp/sapporo-r/index.html" target="_blank"><i class="ti ti-world"></i>公式サイト</a></div></div>
+    </div>
+    <div class="cat-label">お食事・二次会</div>
+    <div class="card-grid">
+      <div class="info-card"><div class="info-card-name">ジンギスカン のざわ</div><div class="info-card-links"><a class="ilink" href="https://tabelog.com/hokkaido/A0101/A010103/1001047/" target="_blank"><i class="ti ti-external-link"></i>食べログ</a><a class="ilink" href="https://maps.app.goo.gl/eJHBxZfKHvDPy4NL9" target="_blank"><i class="ti ti-map-pin"></i>地図</a></div></div>
+      <div class="info-card"><div class="info-card-name">郷土料理 かに亭</div><div class="info-card-links"><a class="ilink" href="https://kanitei.owst.jp/" target="_blank"><i class="ti ti-world"></i>公式サイト</a><a class="ilink" href="https://maps.app.goo.gl/V59jsRYr6LRwVKdw9" target="_blank"><i class="ti ti-map-pin"></i>地図</a></div></div>
+      <div class="info-card"><div class="info-card-name">笑パブ BOWWOW</div><div class="info-card-links"><a class="ilink" href="https://s-freec.com/BOWWOW/" target="_blank"><i class="ti ti-external-link"></i>店舗情報</a><a class="ilink" href="https://maps.app.goo.gl/dEE1BsyyhDKut29bA" target="_blank"><i class="ti ti-map-pin"></i>地図</a></div></div>
+    </div>
+    <div class="cat-label">貸切バス</div>
+    <div class="card-grid">
+      <div class="info-card" style="grid-column:1/-1"><div class="info-card-name">有限会社 栗山交通</div><div class="info-card-meta">〒069-1507 北海道夕張郡栗山町字旭台1番地79<br>TEL：0123-72-4745 ／ FAX：0123-72-2845<br>車両：大型バス（サロンタイプ・冷蔵庫付き）</div><div class="price-pill">見積金額：355,000円（税込）　※有料道路代・駐車代別</div></div>
+    </div>
+
+    <!-- ラウンド賞 -->
+    <div class="prize-box">
+      <div class="prize-header">
+        <div class="prize-icon"><i class="ti ti-trophy"></i></div>
+        <div><div class="prize-title-text">ラウンド賞　／　各日共通</div><div class="prize-subtitle-text">新ペリア方式での順位集計 ＋ ニアピン　・　3日間、毎ラウンドが勝負！</div></div>
+        <div class="prize-total"><div class="prize-total-label">1ラウンド総額</div><div class="prize-total-val">60,000P</div></div>
+      </div>
+      <div class="medal-grid">
+        <div class="medal-card gold"><i class="ti ti-trophy"></i><div class="medal-rank">優勝</div><div class="medal-amount">10,000P</div></div>
+        <div class="medal-card silver"><i class="ti ti-medal"></i><div class="medal-rank">準優勝</div><div class="medal-amount">7,000P</div></div>
+        <div class="medal-card bronze"><i class="ti ti-award"></i><div class="medal-rank">3位</div><div class="medal-amount">5,000P</div></div>
+      </div>
+      <div class="bonus-label">飛び賞・特別賞　／　運次第で誰でもチャンスあり</div>
+      <div class="bonus-grid">
+        <div class="bonus-card"><div class="bonus-rank">5位</div><div class="bonus-amount">3,000P</div></div>
+        <div class="bonus-card"><div class="bonus-rank">7位</div><div class="bonus-amount">5,000P</div></div>
+        <div class="bonus-card"><div class="bonus-rank">10位</div><div class="bonus-amount">3,000P</div></div>
+        <div class="bonus-card"><div class="bonus-rank">13位</div><div class="bonus-amount">3,000P</div></div>
+        <div class="bonus-card"><div class="bonus-rank">15位</div><div class="bonus-amount">3,000P</div></div>
+        <div class="bonus-card bb"><div class="bonus-rank">BB（ブービー）</div><div class="bonus-amount">5,000P</div></div>
+      </div>
+      <div class="nearpin-card">
+        <i class="ti ti-flag"></i>
+        <div><div class="nearpin-title">ニアピン賞　／　ピンに最も近い者勝ち！</div><div class="nearpin-sub">OUT・IN それぞれにニアピンホール設定<br>4ホール × 4,000P</div></div>
+        <div class="nearpin-amount">16,000P<div class="nearpin-amount-sub">合計</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 参加者一覧 -->
+  <div class="section">
+    <div class="section-title"><i class="ti ti-users-group"></i>参加者一覧</div>
+    <div class="participant-meta">五十音順　／　全24名（うち1名未確定）</div>
+    <div class="participant-grid">
+      <div class="p-cell"><span class="p-num">1</span><span class="p-name">朝長　昭仁</span></div>
+      <div class="p-cell"><span class="p-num">2</span><span class="p-name">芦刈　克己</span></div>
+      <div class="p-cell"><span class="p-num">3</span><span class="p-name">甘糟　裕介</span></div>
+      <div class="p-cell"><span class="p-num">4</span><span class="p-name">池野　元就</span></div>
+      <div class="p-cell"><span class="p-num">5</span><span class="p-name">井上　直紀</span></div>
+      <div class="p-cell"><span class="p-num">6</span><span class="p-name">上中　康則</span></div>
+      <div class="p-cell"><span class="p-num">7</span><span class="p-name">川野　英輝</span></div>
+      <div class="p-cell"><span class="p-num">8</span><span class="p-name">鬼頭　謙治</span></div>
+      <div class="p-cell"><span class="p-num">9</span><span class="p-name">木目田　秀一</span></div>
+      <div class="p-cell"><span class="p-num">10</span><span class="p-name">清野　誠</span></div>
+      <div class="p-cell"><span class="p-num">11</span><span class="p-name">杉山　倫久</span></div>
+      <div class="p-cell"><span class="p-num">12</span><span class="p-name">高井　勝</span></div>
+      <div class="p-cell"><span class="p-num">13</span><span class="p-name">中川　大輔</span></div>
+      <div class="p-cell"><span class="p-num">14</span><span class="p-name">西根　克紀</span></div>
+      <div class="p-cell"><span class="p-num">15</span><span class="p-name">二ノ宮　喜博</span></div>
+      <div class="p-cell"><span class="p-num">16</span><span class="p-name">野村　卓洋</span></div>
+      <div class="p-cell"><span class="p-num">17</span><span class="p-name">早川　和雄</span></div>
+      <div class="p-cell"><span class="p-num">18</span><span class="p-name">日坂　泰之</span></div>
+      <div class="p-cell"><span class="p-num">19</span><span class="p-name">晝間　隆広</span></div>
+      <div class="p-cell"><span class="p-num">20</span><span class="p-name">保住　朋之</span></div>
+      <div class="p-cell"><span class="p-num">21</span><span class="p-name">武藏　圭太</span></div>
+      <div class="p-cell"><span class="p-num">22</span><span class="p-name">山口　秀明</span></div>
+      <div class="p-cell"><span class="p-num">23</span><span class="p-name">山田　秀明</span></div>
+      <div class="p-cell vacant"><span class="p-num">24</span><span class="p-name">（未定）</span></div>
+    </div>
+  </div>
+
+  <!-- 参加費・収支 -->
+  <div class="section">
+    <div class="section-title"><i class="ti ti-calculator"></i>参加費・収支</div>
+
+    <!-- 参加費バナー -->
+    <div style="background:var(--blue-bg);border:0.5px solid #85B7EB;border-radius:var(--radius);padding:1.25rem 1.5rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;margin-bottom:1rem;">
+      <div>
+        <div style="font-size:11px;font-weight:600;color:var(--blue);letter-spacing:0.5px;margin-bottom:4px;">参加費</div>
+        <div style="font-size:26px;font-weight:700;color:#0C447C;">30,000 <span style="font-size:14px;font-weight:500;">円 / 名</span></div>
+      </div>
+      <div style="text-align:right;">
+        <div style="font-size:11px;font-weight:600;color:var(--blue);letter-spacing:0.5px;margin-bottom:4px;">参加人数</div>
+        <div style="font-size:26px;font-weight:700;color:#0C447C;">24 <span style="font-size:14px;font-weight:500;">名</span></div>
+      </div>
+    </div>
+
+    <!-- 収支テーブル -->
+    <div style="border:0.5px solid var(--border);border-radius:var(--radius);overflow:hidden;">
+
+      <!-- 収入 -->
+      <div style="background:var(--green-bg);padding:8px 14px;display:flex;align-items:center;gap:6px;">
+        <i class="ti ti-trending-up" style="color:var(--green-dark);font-size:15px;"></i>
+        <span style="font-size:12px;font-weight:600;color:var(--green-dark);">収　入</span>
+      </div>
+      <div style="background:#fff;">
+        <div style="display:grid;grid-template-columns:1fr auto auto;gap:0;align-items:center;">
+          <div style="padding:12px 14px;font-size:13px;color:var(--text);">参加費</div>
+          <div style="padding:12px 10px;font-size:12px;color:var(--text2);white-space:nowrap;">30,000円 × 24名</div>
+          <div style="padding:12px 14px;font-size:14px;font-weight:700;color:var(--green-dark);text-align:right;white-space:nowrap;">720,000円</div>
+        </div>
+        <div style="margin:0 14px;border-top:0.5px solid var(--border-light);"></div>
+        <div style="display:grid;grid-template-columns:1fr auto;padding:10px 14px;background:var(--green-bg);">
+          <div style="font-size:12px;font-weight:600;color:var(--green-dark);">収入合計</div>
+          <div style="font-size:15px;font-weight:700;color:var(--green-dark);">720,000円</div>
+        </div>
+      </div>
+
+      <div style="height:8px;background:var(--bg2);"></div>
+
+      <!-- 支出 -->
+      <div style="background:var(--orange-bg);padding:8px 14px;display:flex;align-items:center;gap:6px;">
+        <i class="ti ti-trending-down" style="color:#993C1D;font-size:15px;"></i>
+        <span style="font-size:12px;font-weight:600;color:#993C1D;">支　出</span>
+      </div>
+      <div style="background:#fff;">
+        <div style="display:grid;grid-template-columns:1fr auto auto;gap:0;align-items:center;">
+          <div style="padding:12px 14px;font-size:13px;color:var(--text);">バス代・高速代 他</div>
+          <div style="padding:12px 10px;font-size:12px;color:var(--text2);white-space:nowrap;"></div>
+          <div style="padding:12px 14px;font-size:14px;font-weight:600;color:var(--text);text-align:right;white-space:nowrap;">380,000円</div>
+        </div>
+        <div style="margin:0 14px;border-top:0.5px solid var(--border-light);"></div>
+        <div style="display:grid;grid-template-columns:1fr auto auto;gap:0;align-items:center;">
+          <div style="padding:12px 14px;font-size:13px;color:var(--text);">賞金（ラウンド賞）</div>
+          <div style="padding:12px 10px;font-size:12px;color:var(--text2);white-space:nowrap;">60,000P × 3日</div>
+          <div style="padding:12px 14px;font-size:14px;font-weight:600;color:var(--text);text-align:right;white-space:nowrap;">180,000円</div>
+        </div>
+        <div style="margin:0 14px;border-top:0.5px solid var(--border-light);"></div>
+        <div style="display:grid;grid-template-columns:1fr auto auto;gap:0;align-items:center;">
+          <div style="padding:12px 14px;font-size:13px;color:var(--text);">バス内飲料（3日分）</div>
+          <div style="padding:12px 10px;font-size:12px;color:var(--text2);white-space:nowrap;"></div>
+          <div style="padding:12px 14px;font-size:14px;font-weight:600;color:var(--text);text-align:right;white-space:nowrap;">40,000円</div>
+        </div>
+        <div style="margin:0 14px;border-top:0.5px solid var(--border-light);"></div>
+        <div style="display:grid;grid-template-columns:1fr auto auto;gap:0;align-items:center;">
+          <div style="padding:12px 14px;font-size:13px;color:var(--text);">HCC土産代</div>
+          <div style="padding:12px 10px;font-size:12px;color:var(--text2);white-space:nowrap;"></div>
+          <div style="padding:12px 14px;font-size:14px;font-weight:600;color:var(--text);text-align:right;white-space:nowrap;">30,000円</div>
+        </div>
+        <div style="margin:0 14px;border-top:0.5px solid var(--border-light);"></div>
+        <div style="display:grid;grid-template-columns:1fr auto;padding:10px 14px;background:var(--orange-bg);">
+          <div style="font-size:12px;font-weight:600;color:#993C1D;">支出合計</div>
+          <div style="font-size:15px;font-weight:700;color:#993C1D;">630,000円</div>
+        </div>
+      </div>
+
+      <div style="height:8px;background:var(--bg2);"></div>
+
+      <!-- 収支差額 -->
+      <div style="background:#fff;display:grid;grid-template-columns:1fr auto;align-items:center;padding:16px 14px;border-top:2px solid var(--border);">
+        <div>
+          <div style="font-size:12px;font-weight:600;color:var(--text2);margin-bottom:2px;">現在の余り（予算残）</div>
+          <div style="font-size:11px;color:var(--text3);">720,000 − 630,000</div>
+        </div>
+        <div style="text-align:right;">
+          <div style="font-size:24px;font-weight:700;color:var(--green-dark);">90,000円</div>
+          <div style="font-size:10px;color:var(--text2);margin-top:2px;">※ゴルフ場費用は各自精算</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    HCC 北海道はでっかいどうツアー 2026<br>
+    平塚富士見カントリークラブ　／　2026年7月16日(木)〜18日(土)
+  </div>
+
+</div>
+</body>
+</html>
